@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>實作 - 表單驗證</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="form.css" />
+  </head>
+  <body>
+    <div class="sign-up-area">
+      <h2>Allen Sign Up</h2>
+      <form class="form" method="POST">
+        <div class="input-template">
+          <label for="userName">User Name</label>
+          <input type="text" id="userName" autocomplete="”off" /><span></span>
+          <small></small>
+        </div>
+        <div class="input-template">
+          <label for="email">Email</label>
+          <input type="text" id="email" />
+          <small></small>
+        </div>
+        <div class="input-template">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="text" id="phoneNumber" />
+          <small></small>
+        </div>
+        <div class="input-template">
+          <label for="password">Password</label>
+          <input type="text" id="password" />
+          <small></small>
+        </div>
+        <div class="input-template">
+          <label for="passwordCheck">Password Check</label>
+          <input type="text" id="passwordCheck" />
+          <small></small>
+        </div>
+        <button class="submit-btn" type="submit" onsubmit="return false">
+          Submit
+        </button>
+      </form>
+    </div>
+
+    <script src="form.js"></script>
+  </body>
+</html>
