@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+
 body{
     width: 100%;
     height: 100vh;
     background-image: url(img/montain.jpg);
-    background-position: center;
+    background-position: center center;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Noto Sans TC', sans-serif;
 }
 
 main{
@@ -13,27 +16,39 @@ main{
     height: 30%;
     background-color: rgba(0, 0, 0, 0.25);
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.title{
-    width: 100%;
-    height: 25%;
-}
-.title h1{
-    font-size: 36px;
+h1{
+    font-size: 72px;
     color: #fff;
+    font-weight: bold;
+    margin-bottom: 25px;
 }
 
 .time-area{
-    width: 100%;
-    height: 75%;
     display: flex;
+    justify-content: space-evenly;
 }
 .time-area .box{
-    width: 25%;
-    height: 100%;
-    /* padding: 10px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
 }
-.time-area .hour,.time-area .second{
-    background-color: rgb(192, 31, 31);
+.time-area .box h2{
+    font-size: 48px;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px 10px;
 }
+.time-area .box p{
+    font-size: 24px;
+    font-weight: normal;
+    color: #fff;
+}
+
