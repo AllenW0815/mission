@@ -1,0 +1,179 @@
+body{
+    height: 100vh;
+    background-image: url(img/weather_bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-card{
+    width: 400px;
+    height: 600px;
+    /* background-color: rgba(255, 255, 255, 0.438); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .5s;
+}
+.main-card:hover{
+    transform: scale(1.05);
+}
+.main-card .today{
+    width: 80%;
+    height: 85%;
+    background-color: rgba(220, 220, 220, 0.5);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main-card .today h2{
+    font-size: 36px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 6px;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+.main-card .today h3{
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 2px;
+}
+.main-card .today .weather-temp{
+    width: 100%;
+    height: 30%;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: #fff; */
+}
+.main-card .today .weather-temp h3{
+    font-size: 24px;
+    font-weight: 900;
+    color: #fff;
+}
+
+.main-card .today .info{
+    width: 80%;
+    height: 45%;
+    /* background-color: rgba(78, 39, 39, 0.39); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+.main-card .today .info table{
+    width: 80%;
+    /* background-color: rgba(78, 39, 39, 0.39); */
+    border: 1px solid rgb(255, 255, 255);
+}
+.main-card .today .info table thead{
+    background-color: rgb(66, 114, 136);
+}
+.main-card .today .info table thead th{
+    padding: 12px;
+    letter-spacing: 3px;
+    text-align: center;
+}
+.main-card .today .info table td{
+    padding: 12px;
+    border: 1px solid rgb(255, 255, 255);
+    /* background-color: rgba(201, 235, 174, 0.39); */
+}
+
+/* 小卡區 */
+
+.cards{
+    width: 1300px;
+    height: 400px;
+    /* background-color: rgba(134, 51, 51, 0.219); */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.cards .card{
+    width: 200px;
+    height: 350px;
+    /* margin: 0 15px; */
+    background-color: rgba(134, 51, 51, 0.219);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards .card h2{
+    font-size: 24px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 3px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+}
+.cards .card h3{
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 1px;
+}
+.cards .card .weather-temp{
+    width: 100%;
+    height: 25%;
+    margin: 6px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: #fff; */
+}
+.cards .card .weather-temp img{
+    width: 45%;
+
+}
+.cards .card .weather-temp h3{
+    font-size: 16px;
+    font-weight: 900;
+    color: #fff;
+}
+
+.cards .card .info{
+    width: 90%;
+    height: 45%;
+    /* background-color: rgba(78, 39, 39, 0.39); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+.cards .card .info table{
+    width: 80%;
+    /* background-color: rgba(78, 39, 39, 0.39); */
+    border: 1px solid rgb(255, 255, 255);
+}
+.cards .card .info table thead{
+    background-color: rgb(66, 114, 136);
+}
+.cards .card .info table thead th{
+    padding: 6px;
+    text-align: center;
+}
+.cards .card .info table td{
+    padding: 6px;
+    border: 1px solid rgb(255, 255, 255);
+    /* background-color: rgba(201, 235, 174, 0.39); */
+}
