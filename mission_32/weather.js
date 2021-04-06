@@ -7,17 +7,56 @@ const select = document.querySelector('#select')
 const today = document.querySelector('.today')
 const cards = document.querySelector('.cards')
 
+// init value
+
+
+// AJAX 取資料
+const getDateAJAX = () => {
+    fetch(url)
+    .then((res)=>{
+       return res.json()
+    })
+    .then((result)=>{
+        console.log(result);
+        let data = result.records.locations[0].location
+        let cityIndex = 0
+        let city =  null
+        let time = null
+        let temperature = null
+        let weather = null
+        let bodyTemperature = null
+        let rainProbability = null
+        let humidity = null
+
+        let display = ''
+
+        setOption(data,cityIndex)
+    })
+}
+
 // 設定 select 的 option
-const setOption = (data) =>{
+const setOption = (data,cityIndex) =>{
     let display = ''
     for(let i = 0 ; i < data.length ; i++){
         display += 
         `
-        <option value="${data[i].locationName}">${data[i].locationName}</option>
+        <option value="${i}">${data[i].locationName}</option>
         `      
     }
     select.innerHTML = display
+    console.log(cityIndex);
+    console.log(data);
+    changeCity(data,cityIndex)
 }
+
+// 更換 city 觸發
+const changeCity = (data,cityIndex) =>{
+    console.log(data);
+    cityIndex = select.value
+    showCards(data,cityIndex)
+    // return value
+}
+select.addEventListener('change', changeCity)
 
 // 資料處理
 const timeHandler = (unhandleData) =>{
@@ -67,7 +106,7 @@ const rainProbabilityHandler = (unhandleData) =>{
     return result
 }
 const humidityHandler = (unhandleData) =>{
-    console.log(unhandleData);
+    // console.log(unhandleData);
     let result = [];
     for (let i = 3; i < unhandleData.weatherElement[2].time.length; i+=2) {
         result.push(unhandleData.weatherElement[2].time[i].elementValue[0].value)       
@@ -95,7 +134,7 @@ const showMainCard = (data) =>{
     <h3>${timeConvert}</h3>
     <div class="weather-temp">
     <img src="img/資產 1.png" alt="" />
-    <h3>${temperature}度</h3>
+    <h3>${temperature}°C</h3>
     </div>
     <div class="info">
     <table>
@@ -111,15 +150,15 @@ const showMainCard = (data) =>{
         </tr>
         <tr>
             <td>體感溫度</td>
-            <td>${bodyTemperature}</td>
+            <td>${bodyTemperature}°C</td>
         </tr>
         <tr>
             <td>降雨機率</td>
-            <td>${rainProbability}</td>
+            <td>${rainProbability}%</td>
         </tr>
         <tr>
             <td>相對溼度</td>
-            <td>${humidity}</td>
+            <td>${humidity}%</td>
         </tr>
         </tbody>
     </table>
@@ -129,11 +168,12 @@ const showMainCard = (data) =>{
 } 
 
 // 生成 cards
-const showCards = (data) =>{
-    // console.log(data[0]);
-    let unhandleData = data[0]
+const showCards = (data,cityIndex) =>{
+    console.log(data);
+    console.log(cityIndex);
+    let unhandleData = data[cityIndex]
     // 已在上一層宣告
-    locationName = unhandleData.locationName
+    city = data[cityIndex].locationName
     time = timeHandler(unhandleData)
     temperature = temperatureHandler(unhandleData)
     weather = weatherHandler(unhandleData)
@@ -145,11 +185,11 @@ const showCards = (data) =>{
         display +=
         `
         <div class="card">
-        <h2>${locationName}</h2>
+        <h2>${city}</h2>
         <h3>${time[i]}</h3>
         <div class="weather-temp">
         <img src="img/資產 1.png" alt="" />
-        <h3>${temperature[i]}度</h3>
+        <h3>${temperature[i]}°C</h3>
         </div>
         <div class="info">
         <table>
@@ -165,7 +205,7 @@ const showCards = (data) =>{
             </tr>
             <tr>
                 <td>體感溫度</td>
-                <td>${bodyTemperature[i]}</td>
+                <td>${bodyTemperature[i]}°C</td>
             </tr>
             <tr>
                 <td>降雨機率</td>
@@ -185,90 +225,6 @@ const showCards = (data) =>{
     cards.innerHTML = display
 }
 
-// AJAX 取資料
-const getDateAJAX = () => {
-    fetch(url)
-    .then((res)=>{
-       return res.json()
-    })
-    .then((result)=>{
-        let data = result.records.locations[0].location
-        // console.log(data);
-        //測試
-        // console.log(data[0].weatherElement[0].time[0].elementValue[0].value);
-        // console.log(data[0].weatherElement[1].time[0].elementValue[0].value);
-        // console.log(data[0].weatherElement[2].time[0].elementValue[0].value);
-        // console.log(data[0].weatherElement[3].time[0].elementValue[0].value);
-        // console.log(data[0].weatherElement[4].time[0].elementValue[0].value);
-    
-        let locationName =  null
-        let time = null
-        let temperature = null
-        let weather = null
-        let bodyTemperature = null
-        let rainProbability = null
-        let humidity = null
 
-        let display =''
-
-        setOption(data)
-        showMainCard(data)
-        showCards(data)
-
-    })
-}
 
 getDateAJAX()
-
-
-// for (let i = 1 ; i < 7 ; i++){            
-//     locationName = data[i].locationName
-//     time = data[i].weatherElement[i-1].time[i].startTime
-//     timeConvert = time.slice(0,11)
-//     temperature = data[i].weatherElement[i].time[i].elementValue[i].value
-//     weather = data[i].weatherElement[i+3].time[i].elementValue[i].value
-//     bodyTemperature = data[i].weatherElement[i+2].time[i].elementValue[i].value
-//     rainProbability = data[i].weatherElement[i-1].time[i].elementValue[i].value
-//     humidity = data[i].weatherElement[i+1].time[i].elementValue[i].value
-
-//     display += 
-//     `
-//     <div class="card">
-//         <h2>${locationName}</h2>
-//         <h3>${timeConvert}</h3>
-//         <div class="weather-temp">
-//         <img src="img/資產 1.png" alt="" />
-//         <h3>${temperature}度</h3>
-//         </div>
-//         <div class="info">
-//         <table>
-//             <thead>
-//             <tr>
-//                 <th colspan="2">天氣資訊</th>
-//             </tr>
-//             </thead>
-//             <tbody>
-//             <tr>
-//                 <td>天氣現象</td>
-//                 <td>${weather}</td>
-//             </tr>
-//             <tr>
-//                 <td>體感溫度</td>
-//                 <td>${bodyTemperature}</td>
-//             </tr>
-//             <tr>
-//                 <td>降雨機率</td>
-//                 <td>${rainProbability}</td>
-//             </tr>
-//             <tr>
-//                 <td>相對溼度</td>
-//                 <td>${humidity}</td>
-//             </tr>
-//             </tbody>
-//         </table>
-//         </div>
-//     </div>
-//     `
-// }
-// console.log(display);
-// cards.innerHTML = display
