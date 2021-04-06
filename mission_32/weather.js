@@ -7,9 +7,17 @@ const select = document.querySelector('#select')
 const today = document.querySelector('.today')
 const cards = document.querySelector('.cards')
 
-// static data
+// static data 使用此筆資料
 let latestData = null
 
+// 先宣告
+let city =  null
+let time = null
+let temperature = null
+let weather = null
+let bodyTemperature = null
+let rainProbability = null
+let humidity = null
 
 // AJAX 取資料
 const getDateAJAX = () => {
@@ -18,46 +26,40 @@ const getDateAJAX = () => {
        return res.json()
     })
     .then((result)=>{
-        console.log(result);
+        // console.log(result);
         let data = result.records.locations[0].location
+        // 取得資料後複製一份到全域 後續動作皆使用同一筆data 不然資料流很亂
         latestData = [...data]
         let cityIndex = 0
-        let city =  null
-        let time = null
-        let temperature = null
-        let weather = null
-        let bodyTemperature = null
-        let rainProbability = null
-        let humidity = null
 
-        let display = ''
-
-        setOption(data,cityIndex)
+        // 先依照資料筆數來 render select 的項目
+        setOption(cityIndex)
     })
 }
 
 // 設定 select 的 option
-const setOption = (data,cityIndex) =>{
+const setOption = (cityIndex) =>{
     let display = ''
-    for(let i = 0 ; i < data.length ; i++){
+    // 取用全域的資料
+    for(let i = 0 ; i < latestData.length ; i++){
         display += 
         `
-        <option value="${i}">${data[i].locationName}</option>
+        <option value="${i}">${latestData[i].locationName}</option>
         `      
     }
     select.innerHTML = display
-    console.log(cityIndex);
-    console.log(data);
-    changeCity(data,cityIndex)
+    // console.log(cityIndex);
+    // console.log(data);
+    changeCity(cityIndex)
 }
 
 // 更換 city 觸發
 const changeCity = (cityIndex) =>{
-    console.log(latestData);
+    // 重新指派新的 cityIndex
     cityIndex = select.value
+    // 再往裡面傳
     showCards(latestData,cityIndex)
     showMainCard(latestData,cityIndex)
-    // return value
 }
 select.addEventListener('change', changeCity)
 
@@ -119,9 +121,10 @@ const humidityHandler = (unhandleData) =>{
 }
 
 // 生成 main-card
-const showMainCard = (data,cityIndex) =>{
+const showMainCard = (latestData,cityIndex) =>{
     let display = ''
-    let unhandleData = data[cityIndex]
+    // 這邊影響內容
+    let unhandleData = latestData[cityIndex]
     locationName = unhandleData.locationName
     time = unhandleData.weatherElement[0].time[0].startTime
     timeConvert = time.slice(0,11)
@@ -171,13 +174,11 @@ const showMainCard = (data,cityIndex) =>{
 } 
 
 // 生成 cards
-const showCards = (data,cityIndex) =>{
-    console.log(data);
-    console.log(cityIndex);
-    let unhandleData = data[cityIndex]
-    // 已在上一層宣告
-    city = data[cityIndex].locationName
-    console.log(city);
+const showCards = (latestData,cityIndex) =>{
+    let unhandleData = latestData[cityIndex]
+
+    city = latestData[cityIndex].locationName
+    // 將資料處理成 [Array6]
     time = timeHandler(unhandleData)
     temperature = temperatureHandler(unhandleData)
     weather = weatherHandler(unhandleData)
@@ -232,3 +233,11 @@ const showCards = (data,cityIndex) =>{
 
 
 getDateAJAX()
+
+
+// 整體流程回顧
+// 1. 頁面載入時 呼叫 (getDateAJAX) 取得資料後先複製一份存在全域 供後續統一使用 
+// 2. 呼叫 (getDateAJAX) 時先依照資料筆數 產生對應數量的 option (setOption)
+// 3. 起始畫面是預設 value 為 0 的 option
+// 4. 要設定 option 改變時觸發 change 事件 讓 cityIndex 重新指派對應的 value
+// 5. chgange 事件內執行 (showCards) (showMainCard) 讓畫面依照 cityIndex 更新
