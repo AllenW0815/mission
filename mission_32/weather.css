@@ -161,7 +161,7 @@ body{
     text-align: center;
 }
 .cards .card .info table{
-    width: 80%;
+    width: 95%;
     /* background-color: rgba(78, 39, 39, 0.39); */
     border: 1px solid rgb(255, 255, 255);
 }
@@ -169,11 +169,11 @@ body{
     background-color: rgb(66, 114, 136);
 }
 .cards .card .info table thead th{
-    padding: 6px;
+    padding: 8px;
     text-align: center;
 }
 .cards .card .info table td{
-    padding: 6px;
+    padding: 8px 3px;
     border: 1px solid rgb(255, 255, 255);
     /* background-color: rgba(201, 235, 174, 0.39); */
 }
