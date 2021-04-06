@@ -7,7 +7,8 @@ const select = document.querySelector('#select')
 const today = document.querySelector('.today')
 const cards = document.querySelector('.cards')
 
-// init value
+// static data
+let latestData = null
 
 
 // AJAX 取資料
@@ -19,6 +20,7 @@ const getDateAJAX = () => {
     .then((result)=>{
         console.log(result);
         let data = result.records.locations[0].location
+        latestData = [...data]
         let cityIndex = 0
         let city =  null
         let time = null
@@ -50,10 +52,11 @@ const setOption = (data,cityIndex) =>{
 }
 
 // 更換 city 觸發
-const changeCity = (data,cityIndex) =>{
-    console.log(data);
+const changeCity = (cityIndex) =>{
+    console.log(latestData);
     cityIndex = select.value
-    showCards(data,cityIndex)
+    showCards(latestData,cityIndex)
+    showMainCard(latestData,cityIndex)
     // return value
 }
 select.addEventListener('change', changeCity)
@@ -116,17 +119,17 @@ const humidityHandler = (unhandleData) =>{
 }
 
 // 生成 main-card
-const showMainCard = (data) =>{
+const showMainCard = (data,cityIndex) =>{
     let display = ''
-    
-    locationName = data[0].locationName
-    time = data[0].weatherElement[0].time[0].startTime
+    let unhandleData = data[cityIndex]
+    locationName = unhandleData.locationName
+    time = unhandleData.weatherElement[0].time[0].startTime
     timeConvert = time.slice(0,11)
-    temperature = data[0].weatherElement[1].time[0].elementValue[0].value
-    weather = data[0].weatherElement[4].time[0].elementValue[0].value
-    bodyTemperature = data[0].weatherElement[3].time[0].elementValue[0].value
-    rainProbability = data[0].weatherElement[0].time[0].elementValue[0].value
-    humidity = data[0].weatherElement[2].time[0].elementValue[0].value
+    temperature = unhandleData.weatherElement[1].time[0].elementValue[0].value
+    weather = unhandleData.weatherElement[4].time[0].elementValue[0].value
+    bodyTemperature = unhandleData.weatherElement[3].time[0].elementValue[0].value
+    rainProbability = unhandleData.weatherElement[0].time[0].elementValue[0].value
+    humidity = unhandleData.weatherElement[2].time[0].elementValue[0].value
 
     display += 
     `
@@ -174,6 +177,7 @@ const showCards = (data,cityIndex) =>{
     let unhandleData = data[cityIndex]
     // 已在上一層宣告
     city = data[cityIndex].locationName
+    console.log(city);
     time = timeHandler(unhandleData)
     temperature = temperatureHandler(unhandleData)
     weather = weatherHandler(unhandleData)
