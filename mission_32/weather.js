@@ -10,15 +10,6 @@ const cards = document.querySelector('.cards')
 // static data 使用此筆資料
 let latestData = null
 
-// 先宣告
-let city =  null
-let time = null
-let temperature = null
-let weather = null
-let bodyTemperature = null
-let rainProbability = null
-let humidity = null
-
 // AJAX 取資料
 const getDateAJAX = () => {
     fetch(url)
@@ -27,10 +18,19 @@ const getDateAJAX = () => {
     })
     .then((result)=>{
         // console.log(result);
-        let data = result.records.locations[0].location
-        // 取得資料後複製一份到全域 後續動作皆使用同一筆data 不然資料流很亂
-        latestData = [...data]
+        // 取得資料後存放到全域 
+        latestData = result.records.locations[0].location
+        
         let cityIndex = 0
+
+        // let city =  null
+        // let time = null
+        // let weatherImg = null
+        // let temperature = null
+        // let weather = null
+        // let bodyTemperature = null
+        // let rainProbability = null
+        // let humidity = null
 
         // 先依照資料筆數來 render select 的項目
         setOption(cityIndex)
@@ -120,6 +120,27 @@ const humidityHandler = (unhandleData) =>{
     return result
 }
 
+// 天氣圖
+const setWeatherImg = (weather) =>{
+    if(weather === '多雲' || weather === '陰時多雲'){
+        return weatherImg = "img/cloud.png"
+    }else if(weather === '晴時多雲' || weather === '多雲時晴'){
+        return weatherImg = "img/cloud-sun.png"
+    }else if(weather === '陰短暫雨' || weather === '多雲短暫雨' || weather === '多雲時陰短暫雨' || weather === '多雲短暫雨' || weather ==='陰時多雲短暫雨'){
+        return weatherImg = "img/rain.png"
+    }else{
+        return weatherImg = "img/sun.png"
+    }
+}
+// 因為 cards 要是陣列 所以需要再另外用此 function 處理
+const setWeatherImgArray = (weather) =>{
+    let ary = []
+    for(let i = 0 ; i < weather.length ; i++ ){
+        ary.push(setWeatherImg(weather[i]))
+    }
+    return ary
+}
+
 // 生成 main-card
 const showMainCard = (latestData,cityIndex) =>{
     let display = ''
@@ -130,6 +151,7 @@ const showMainCard = (latestData,cityIndex) =>{
     timeConvert = time.slice(0,11)
     temperature = unhandleData.weatherElement[1].time[0].elementValue[0].value
     weather = unhandleData.weatherElement[4].time[0].elementValue[0].value
+    weatherImg = setWeatherImg(weather)
     bodyTemperature = unhandleData.weatherElement[3].time[0].elementValue[0].value
     rainProbability = unhandleData.weatherElement[0].time[0].elementValue[0].value
     humidity = unhandleData.weatherElement[2].time[0].elementValue[0].value
@@ -139,7 +161,7 @@ const showMainCard = (latestData,cityIndex) =>{
     <h2>${locationName}</h2>
     <h3>${timeConvert}</h3>
     <div class="weather-temp">
-    <img src="img/資產 1.png" alt="" />
+    <img src=${weatherImg} alt="" />
     <h3>${temperature}°C</h3>
     </div>
     <div class="info">
@@ -176,12 +198,16 @@ const showMainCard = (latestData,cityIndex) =>{
 // 生成 cards
 const showCards = (latestData,cityIndex) =>{
     let unhandleData = latestData[cityIndex]
+    
 
     city = latestData[cityIndex].locationName
     // 將資料處理成 [Array6]
     time = timeHandler(unhandleData)
     temperature = temperatureHandler(unhandleData)
     weather = weatherHandler(unhandleData)
+    console.log(weather);
+    weatherImg = setWeatherImgArray(weather)
+    console.log(weatherImg);
     bodyTemperature = bodyTemperatureHandler(unhandleData)
     rainProbability = rainProbabilityHandler(unhandleData)
     humidity = humidityHandler(unhandleData)
@@ -193,7 +219,7 @@ const showCards = (latestData,cityIndex) =>{
         <h2>${city}</h2>
         <h3>${time[i]}</h3>
         <div class="weather-temp">
-        <img src="img/資產 1.png" alt="" />
+        <img src=${weatherImg[i]} alt="" />
         <h3>${temperature[i]}°C</h3>
         </div>
         <div class="info">
@@ -229,6 +255,7 @@ const showCards = (latestData,cityIndex) =>{
     
     cards.innerHTML = display
 }
+
 
 
 
