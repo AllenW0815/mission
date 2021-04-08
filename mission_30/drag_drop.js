@@ -1,5 +1,25 @@
+
+// 陣列中的 empty 不知道怎麼操作 目前都是 undefined
+const setData = () =>{
+    // 想用這個方法試試看
+    let data = new Array(10)
+    // console.log(data.length);
+    let result = data.map((e)=> e += Math.floor(Math.random()*100))
+    return result
+}
+// 讓原始資料隨機產生
+const setData2 = () =>{
+    let data = []
+    // console.log(data.length);
+    for (let i = 0 ; i < 10; i++) {
+        data.push(Math.floor(Math.random()*100))
+    }
+    return data
+}
+
 // origin Data
-const number = ['08','18','27','33','47','52','66','79','87','99']
+const number = setData2()
+// const number = ['08','18','27','33','47','52','66','79','87','99']
 const listItems = []
 // DOM
 const dragArea = document.querySelector('.drag-area')
