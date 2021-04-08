@@ -36,7 +36,6 @@ function dragDrop() {
     // console.log('Event','drop');
     const dragEndIndex =  this.getAttribute('data-index')
     swapItems(dragStartIndex, dragEndIndex)   
-
     this.classList.remove('over')
 }
 const swapItems = (fromIndex, toIndex) =>{
@@ -44,7 +43,8 @@ const swapItems = (fromIndex, toIndex) =>{
     let firstItem = listItems[fromIndex].querySelector('.draggable')
     let secondItem = listItems[toIndex].querySelector('.draggable')
 
-    // console.log(firstItem,secondItem);
+    console.log(firstItem,secondItem);
+    console.log(listItems[fromIndex],listItems[toIndex]);
     listItems[fromIndex].appendChild(secondItem)
     listItems[toIndex].appendChild(firstItem)
 }
@@ -75,8 +75,6 @@ const createList = () =>{
         // console.log(item);
         const listItem = document.createElement('li')
         listItem.setAttribute('data-index', index)
-        listItem.classList.add('item')
-        // listItem.classList.add('over')
         listItem.innerHTML =
         `
         <span class="number"> ${index+1}.</span>
@@ -86,16 +84,15 @@ const createList = () =>{
         </div>        
         `
         listItems.push(listItem)
+        // console.log(listItems);
         dragArea.appendChild(listItem)
     });
-
     addEventListeners()
 }
 createList()
 
 function checkOrder(){
     const standerOrder = []
-    const currentOrder =  []
     let ps = document.querySelectorAll('p')
 
     ps.forEach(p => {
@@ -103,12 +100,6 @@ function checkOrder(){
     })
     standerOrder.sort().reverse();
     // console.log(standerOrder);
-    
-    
-    // Items.forEach(p => {
-    //     currentOrder.push((p.innerText).slice(-2))  
-    // })
-    // console.log(currentOrder);
     ps.forEach((p,index) => {
           if((p.innerText).slice(-2) !== standerOrder[index]){
             p.classList.remove('correct')
