@@ -22,7 +22,7 @@ body{
     height: 750px;
     border-radius:10px;
     position: absolute;
-    left:60%;
+    left:63%;
     bottom: 10%;
     /* transform: translate(-50%,50%); */
     display: flex;
@@ -89,7 +89,7 @@ body{
     background-color: rgba(158, 184, 163, 0.589);
 }
 
-.container .drag-area .item:hover{
+.container .drag-area li:hover{
     transform: scale(1.03);
 }
 
