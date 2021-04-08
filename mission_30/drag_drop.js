@@ -1,10 +1,10 @@
 // origin Data
-const number = ['80','81','82','83','84','85','86','87','88','89']
+const number = ['08','18','27','33','47','52','66','79','87','99']
 const listItems = []
 // DOM
 const dragArea = document.querySelector('.drag-area')
-const checkBtn = document.querySelector('.check')
-// 讓陣列隨機排序
+const checkBtn = document.querySelector('.check-btn')
+// 讓陣列隨機排序 這個實作使用另一個方式打亂排列
 const random = (a,b) => Math.random() > 0.5 ? 1 : -1
 // 起始拖曳區塊位置索引 在dragstart的時候會賦值
 let dragStartIndex = null;
@@ -81,7 +81,7 @@ const createList = () =>{
         `
         <span class="number"> ${index+1}.</span>
         <div class="draggable" draggable="true">
-        <p class="text">Drag Number : ${item.value}</p>
+        <p>Drag Number : ${item.value}</p>
         <i class="fas fa-bars"></i>
         </div>        
         `
@@ -93,32 +93,34 @@ const createList = () =>{
 }
 createList()
 
+function checkOrder(){
+    const standerOrder = []
+    const currentOrder =  []
+    let ps = document.querySelectorAll('p')
 
-
-
-
-// 原本的寫法
-const generateItem = () =>{
-    let data = [...number].sort(random)
-    let display = ''
-    for(let i = 0 ; i < data.length ; i++){
-    display += 
-    `
-    <li class="item" draggable="true">
-        <span class="text"> Drag and Drop Number : ${data[i]} </span>
-        <i class="fas fa-bars"></i>
-    </li>
-    `    
-    }
+    ps.forEach(p => {
+        standerOrder.push((p.innerText).slice(-2))  
+    })
+    standerOrder.sort().reverse();
+    // console.log(standerOrder);
     
-    dragArea.innerHTML = display
-}
-// generateItem()
+    
+    // Items.forEach(p => {
+    //     currentOrder.push((p.innerText).slice(-2))  
+    // })
+    // console.log(currentOrder);
+    ps.forEach((p,index) => {
+          if((p.innerText).slice(-2) !== standerOrder[index]){
+            p.classList.remove('correct')
+            p.classList.add('wrong')
+          } else{
+            p.classList.remove('wrong')
+            p.classList.add('correct')
+          }
+    })
 
-// 現成的套件
-/* 
-new Sortable(dragArea ,{
-    animation : 500,
-    ghostClass: 'blue-background-class',
-})
-*/  
+}
+
+checkBtn.addEventListener('click',checkOrder)
+
+
