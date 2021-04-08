@@ -1,12 +1,7 @@
 
-// 陣列中的 empty 不知道怎麼操作 目前都是 undefined
-const setData = () =>{
-    // 想用這個方法試試看
-    let data = new Array(10)
-    // console.log(data.length);
-    let result = data.map((e)=> e += Math.floor(Math.random()*100))
-    return result
-}
+// 使用 new Array 讓原始資料隨機產生 簡化成一行
+const setData = () => new Array(10).fill(0).map((e)=> e += Math.floor(Math.random()*100))    
+
 // 讓原始資料隨機產生
 const setData2 = () =>{
     let data = []
@@ -18,7 +13,7 @@ const setData2 = () =>{
 }
 
 // origin Data
-const number = setData2()
+const number = setData()
 // const number = ['08','18','27','33','47','52','66','79','87','99']
 const listItems = []
 // DOM
