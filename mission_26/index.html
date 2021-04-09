@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Player</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="music_player.css" />
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/856621abb1.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>Allen's Music Player</h1>
+    <div class="music-container">
+      <div class="music-info">
+        <h4 class="music-name">Lost in paradise</h4>
+        <div class="progress-area">
+          <div class="progress"></div>
+        </div>
+      </div>
+
+      <audio src="music/lost_in_paradise.mp3"></audio>
+
+      <div class="img-container">
+        <img src="img/lost_in_paradise.png" alt="" />
+      </div>
+
+      <div class="navgation">
+        <button id="prev" class="action-btn">
+          <i class="fas fa-backward"></i>
+        </button>
+        <button id="play" class="action-btn">
+          <i class="fas fa-play"></i>
+        </button>
+        <button id="next" class="action-btn">
+          <i class="fas fa-forward"></i>
+        </button>
+      </div>
+    </div>
+    <footer>
+      <p>網站內所有內容僅供學術使用</p>
+      <p>All contents in this website is for academic use only</p>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="music_player.js"></script>
+  </body>
+</html>
