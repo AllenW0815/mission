@@ -16,13 +16,12 @@ const progress = document.querySelector('.progress')
 const songs = ['Lost_in_paradise','Desperado','Wild_side','山雀','Yuve_Yuve_Yu']
 let songIndex = 1
 
-loadingSong(songs[songIndex])
-
 function loadingSong (song) {
     musicName.innerText = song.replaceAll('_',' ')
     audio.src = `music/${song}.mp3`
     img.src = `img/${song}.png`
 }
+loadingSong(songs[songIndex])
 
 
 // for playing
@@ -41,9 +40,8 @@ const pauseMode = () =>{
 
 function musicPlay() {
     const isPlaying = musicContainer.classList.contains('play')
-    isPlaying ? pauseMode() :  playingMode()
+    isPlaying ? pauseMode() : playingMode()
 }
-
 playBtn.addEventListener('click',musicPlay)
 
 
@@ -57,7 +55,6 @@ function musicNext() {
     loadingSong(songs[songIndex])
     playingMode()
 }
-
 prevBtn.addEventListener('click',musicPrev) 
 nextBtn.addEventListener('click',musicNext)
 
@@ -70,6 +67,7 @@ function updateProgress(e) {
     const {duration,currentTime} = e.srcElement
     // console.log({duration,currentTime});
     const progressPercent = (currentTime / duration) * 100
+    // console.log('currentTime',currentTime);
     // console.log(progressPercent);
     progress.style.width = `${progressPercent}%`
 }
@@ -77,16 +75,16 @@ function updateProgress(e) {
 audio.addEventListener('timeupdate',updateProgress)
 
 function setProgress(e) {
-    // div的長度
+    // progress的長度
     const width = this.clientWidth
-    console.log(width);
+    // console.log('progress的長度',width);
     // 點擊位置的長度
     const x = e.offsetX
-    console.log(x);
+    // console.log('點擊位置',x);
     // 音樂長度
     const duration =  audio.duration
-    console.log(duration);
-
+    // console.log('音樂長度',duration);
+    // 代表點的位置是總長的幾分之幾再*總長就會得出相對應的當前播放時間更新currentTime
     audio.currentTime = ( x / width ) * duration
 }
 
