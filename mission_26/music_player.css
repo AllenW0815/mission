@@ -109,7 +109,7 @@ h4{
     cursor: pointer;
 }
 .music-container .music-info .progress-area .progress{
-    background-color: rgb(221, 240, 252);
+    background-color: rgb(145, 206, 245);
     height: 100%;
     border-radius: 10px;  
     width: 0%;

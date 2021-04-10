@@ -92,3 +92,6 @@ function setProgress(e) {
 
 progressArea.addEventListener('click',setProgress)
 
+// music end
+audio.addEventListener('ended',musicNext)
+
