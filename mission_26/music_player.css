@@ -12,12 +12,13 @@ body{
     align-items: center;
     height: 100vh;
 }
-
 h1{
     font-size: 36px;
     margin-bottom: 100px;
     font-family: 'Oswald', sans-serif;
 }
+
+
 
 .music-container{
     margin-bottom: 200px;
@@ -33,7 +34,7 @@ h1{
 }
 
 
-
+/* 圖片的部分 */
 .img-container{
     position: relative;
     width: 110px;
@@ -75,6 +76,8 @@ h1{
     }
 }
 
+
+/* 曲名及進度條 */
 .music-info{
     background-color: rgba(255, 255, 255, 0.6);
     border-radius:0 0 15px 15px  ;
@@ -95,7 +98,6 @@ h1{
     opacity: 1;
     transform:translateY(100%);
 }
-
 h4{
     font-size: 18px;
     color: rgb(100, 99, 99);
@@ -116,11 +118,11 @@ h4{
     height: 100%;
     border-radius: 10px;  
     width: 0%;
-    transition: width 0.1s linear;
+    transition:  0.1s linear;
 }
 
 
-
+/* 按鈕 */
 .navgation{
     display: flex;
     align-items: center;
@@ -145,16 +147,13 @@ h4{
 }
 
 
-
-
-
+/* 怕被告 */
 footer{
     position: fixed;
     bottom: 0;
     padding: 10px 0;
     text-align: center;
 }
-
 footer p{
     font-size: 12px;
     color: rgb(87, 87, 87);
