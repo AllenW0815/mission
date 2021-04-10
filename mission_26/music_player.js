@@ -14,7 +14,7 @@ const progress = document.querySelector('.progress')
 
 // song list
 const songs = ['Lost_in_paradise','Desperado','Wild_side','山雀','Yuve_Yuve_Yu']
-let songIndex = 0
+let songIndex = 1
 
 loadingSong(songs[songIndex])
 
