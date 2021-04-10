@@ -36,7 +36,7 @@ h1{
 
 .img-container{
     position: relative;
-    width: 120px;
+    width: 110px;
     margin-right: 30px;
 }
 .img-container::after{    
@@ -52,7 +52,7 @@ h1{
     z-index:10;
 }
 .img-container img{
-    height: 120px;
+    height: 110px;
     width: inherit;
     border-radius: 50%;
     object-fit: cover;
@@ -64,11 +64,14 @@ h1{
     animation-play-state: running;
 }
 @keyframes rotate {
-    from{
-        transform: rotate(0deg);
+    0%{
+        transform: rotate(0deg) scale(1);
     }
-    to{
-        transform: rotate(360deg)
+    50%{
+        transform: rotate(180deg) scale(1.1);
+    }
+    100%{
+        transform: rotate(360deg) scale(1);
     }
 }
 
