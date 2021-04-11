@@ -52,11 +52,11 @@ h1{
     display: flex;
     margin: 40px 0;
     cursor: pointer;
-    /* transition: 0.2s; */
+    transition: 0.4s ease-out;
 }
 .post:hover{
-    transform: translateY(-5px);
-    transition: 0.2s ease-out;
+    transform: translateY(-15px);
+    transition: 0.4s ease-out;
 }
 .post:last-child{
     margin-bottom: 120px;
