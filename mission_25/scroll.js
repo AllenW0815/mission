@@ -4,6 +4,7 @@ const url = 'https://jsonplaceholder.typicode.com/posts'
 const resultContainer = document.querySelector('.result-container')
 const filter = document.querySelector('.filter')
 const loader = document.querySelector('.loader')
+const arrow = document.querySelector('.arrow')
 
 let limit = 5
 let page = 1
@@ -107,11 +108,22 @@ filter.addEventListener('input',(e)=>{
         const title = post.querySelector('.title').innerText.toLowerCase()
         const body = post.querySelector('.body').innerText.toLowerCase()
 
-        if(title.includes(compareTarget)){
-            post.style.display = 'flex'
-        }else{
-            post.style.display = 'none'
-        }
+        title.includes(compareTarget) || body.includes(compareTarget)
+        ? post.style.display = 'flex' : post.style.display = 'none'
+        
+        // if(title.includes(compareTarget)){
+        //     post.style.display = 'flex'
+        // }else{
+        //     post.style.display = 'none'
+        // }
     })
     
+})
+
+// go top function
+arrow.addEventListener('click',()=>{
+    // 捲動到最頂 沒有動畫 直達
+    // window.scrollTo(0, 0);
+    // 古溜上去
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 })

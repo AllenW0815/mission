@@ -127,3 +127,25 @@ h1{
       transform: translateY(-10px);
     }
   }
+
+/* arrow */
+.arrow{
+    position: fixed;
+    bottom: 10%;
+    right: 10%;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 2px solid rgba(255,186,0,1);
+    cursor: pointer;
+    color: rgba(255,186,0,1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s ease-in-out;
+}
+.arrow:hover{
+    transition: .2s ease-in-out;
+    transform: scale(1.1);
+}
