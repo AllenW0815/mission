@@ -5,24 +5,17 @@ const resultContainer = document.querySelector('.result-container')
 const filter = document.querySelector('.filter')
 const loader = document.querySelector('.loader')
 const arrow = document.querySelector('.arrow')
-
+// default
 let limit = 5
 let page = 1
 
-// copy origin data
-let backupData = null
-
 async function getPosts() {
     const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${limit}&_page=${page}`)
-    const data = await res.json()
-    // console.log(data);
-    return data
+    return await res.json()
 }
-
 // show post in Dom
 async function showPosts(){
     const posts = await getPosts()
-    // console.log(posts);
     let display = ''
     for (let i = 0 ; i < posts.length ; i++ ){
         display +=
@@ -79,19 +72,12 @@ function showLoader2() {
 }
 
 // init
-// showPosts()
 showPosts2()
 
 window.addEventListener('scroll',()=>{
-    // console.log('scrollHeight',document.documentElement.scrollHeight);
-    // console.log('clientHeight',document.documentElement.clientHeight);
-    // console.log('scrollTop',document.documentElement.scrollTop);
-    
     const {scrollTop,scrollHeight,clientHeight} = document.documentElement
 
     if(scrollTop+clientHeight >= scrollHeight - 3){
-        // console.log('123');
-        // showLoader()
         showLoader2()
     }
 })
@@ -110,12 +96,6 @@ filter.addEventListener('input',(e)=>{
 
         title.includes(compareTarget) || body.includes(compareTarget)
         ? post.style.display = 'flex' : post.style.display = 'none'
-        
-        // if(title.includes(compareTarget)){
-        //     post.style.display = 'flex'
-        // }else{
-        //     post.style.display = 'none'
-        // }
     })
     
 })
