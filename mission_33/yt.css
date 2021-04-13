@@ -4,17 +4,19 @@
   font-family: 'Nunito', sans-serif;
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
-html, body {    
+
+body {    
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  padding: 30px 0;
+  background: linear-gradient(90deg, #55c7ed, #2bb3e0, #3bc1ed);
 }
 
 .flexbox {
-  background: linear-gradient(155deg, #55c7ed, #2bb3e0, #3bc1ed);
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,12 +24,12 @@ html, body {
 }
 
 .search {
-  margin: 20px;
+  margin: 10px;
 }
 
 .search > h1 {
   color: white;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   text-shadow: 0 1px #0091c2;
   letter-spacing:2px
 }
@@ -44,7 +46,7 @@ html, body {
   font-size: 16px;
   background: transparent;
   width: 200px;
-  height: 25px;
+  height: 45px;
   padding: 10px;
   border: solid 3px white;
   outline: none;
@@ -63,6 +65,7 @@ html, body {
     outline: none;
     border-radius: 35px;
     cursor: pointer;
+    margin-left: 20px;
 }
 
 .search > div > input::placeholder {
@@ -70,30 +73,83 @@ html, body {
 }
 
 .result{
-    background-color: #fff;
+    /* background-color: #fff; */
     width: 50%;
-    height: 700px;
-    padding: 20px;
+    min-height: 700px;
+    /* padding: 20px; */
     /* max-height: 700px; */
 }
 
 ul{
-    
     list-style: none;
+    margin: 20px 0;
 }
 
 li{
     margin: 0 auto;
     display: flex;
-    width: 95%;
-    height: 150px;
-    background-color: chocolate;
+    width: 90%;
+    max-height: 150px;
+    border-radius: 20px;
+    /* height: 150px; */
+    background-color: rgb(255, 255, 255);
     margin-bottom:10px;
+    padding: 15px;
+}
+
+li a{
+    text-decoration: none;
+    color: #111;
 }
 
 li .pic{
-    padding: 15px;
+    width: 15%;
+    height: 100%;
+    padding: 3px;
+    /* background-color: #cac; */
+    overflow: hidden;
+    margin-right: 20px;
 }
+li .pic img{
+    display:block;
+    margin:auto;
+    /* width: 100%; */
+    height: 100%;
+    object-fit: cover;
+}
+
 li .content{
-    padding: 15px;
+    /* padding: 10px; */
+    width: 75%;
+    text-overflow: ellipsis;
+}
+li .content h3{
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+li .content p{
+    font-size: 12px;
+}
+
+.pages{
+    display: flex;
+}
+.pages .switch{
+    color: white;
+    font-size: 16px;
+    background: transparent;
+    width: 45px;
+    height: 45px;
+    margin: 0 15px;
+    border: solid 3px white;
+    outline: none;
+    border-radius: 35px;
+    cursor: pointer;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+
+}
+.pages i {
+    font-size: 24px;
 }

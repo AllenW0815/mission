@@ -1,15 +1,12 @@
-// key = AIzaSyC3Uae2cxrss-MgXU3XyoXXh6As_4ffE4Y
-
-
+// key 從 google cloud platform 取得
 $(document).ready(function(){
 
-    let API_key = "AIzaSyC3Uae2cxrss-MgXU3XyoXXh6As_4ffE4Y"
+    let key = "AIzaSyC3Uae2cxrss-MgXU3XyoXXh6As_4ffE4Y"
     
     $('.submit').click(function(){
 
         let search = $('input').val()
-
-        videoSearch(API_key,search,5)
+        videoSearch(key,search,5)
     })
 
     function videoSearch (key, search, limit) {
@@ -23,6 +20,7 @@ $(document).ready(function(){
             let user = null
             let time = null
             let description = null
+            let video = null
             let display = ''
 
             data.items.forEach(item => {
@@ -30,18 +28,23 @@ $(document).ready(function(){
                 img = item.snippet.thumbnails.default.url
                 title = item.snippet.title
                 time = item.snippet.publishedAt
-                user = item.channelTitle
+                user = item.snippet.channelTitle
                 description = item.snippet.description
+                video = item.id.videoId
 
                 display +=`
                 <li>
                     <div class="pic">
-                        <img src=${img} alt="" />
+                    <a data-fancybox href="http://www.youtube.com/embed/${video}">
+                    <img src=${img} alt="" />
+                    </a>
                     </div>
                     <div class="content">
-                        <h3>${title}</h3>
+                         <a data-fancybox href="http://www.youtube.com/embed/${video}">
+                          <h3>${title}</h3>   
+                        </a>
                         <span>${time}</span>
-                        <span>${item}</span>
+                        <span>${user}</span>
                         <p>
                         ${description}
                         </p>
@@ -56,5 +59,3 @@ $(document).ready(function(){
     }
 
 })
-
-// https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=relevance&q=${q}&key=AIzaSyBs4RcftfDFAtDE9ndaHFaZAtCYKVMCIfI
