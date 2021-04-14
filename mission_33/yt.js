@@ -2,10 +2,11 @@
 $(document).ready(function(){
 
     let key = "AIzaSyC3Uae2cxrss-MgXU3XyoXXh6As_4ffE4Y"
+    let key2 = "AIzaSyAR5RPNsaVqHdtlYeNjtQQm12R8KSzsnHY"
     
     $('.submit').click(function(){
         let q = $('input').val()
-        videoSearch(key,q,5)
+        videoSearch(key2,q,5)
     })
 
     function videoSearch (key, q, limit) {
@@ -34,7 +35,7 @@ $(document).ready(function(){
                 
                 img = item.snippet.thumbnails.default.url
                 title = item.snippet.title
-                time = item.snippet.publishedAt
+                time = item.snippet.publishedAt.slice(0,10)
                 user = item.snippet.channelTitle
                 description = item.snippet.description
                 video = item.id.videoId
@@ -42,14 +43,17 @@ $(document).ready(function(){
                 display +=`
                 <li>
                     <div class="pic">
-                    <a data-fancybox href="https://www.youtube.com/embed/${video}">
+                    <a class="fresco" href="https://www.youtube.com/embed/${video}">
                     <img src=${img} alt="" />
                     </a>
                     </div>
                     <div class="content">
-                         <a data-fancybox href="https://www.youtube.com/embed/${video}">
-                          <h3>${title}</h3>   
-                         </a>
+                         
+                          <h3>
+                          <a class="fresco" href="https://www.youtube.com/embed/${video}">
+                          ${title}
+                          </a></h3>   
+                         
                         <span>${time}</span>
                         <span>${user}</span>
                         <p>
