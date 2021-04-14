@@ -71,7 +71,7 @@ $(document).ready(function(){
             $('#prev').on('click',prevPage)           
             $('#next').on('click',nextPage)           
         })
-        function createBtn(nextPageToken,prevPageToken,search){
+        function createBtn(nextPageToken,prevPageToken,q){
             let output = ''
             if(!prevPageToken){
                 output = `
