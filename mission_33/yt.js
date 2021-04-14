@@ -4,17 +4,24 @@ $(document).ready(function(){
     let key = "AIzaSyC3Uae2cxrss-MgXU3XyoXXh6As_4ffE4Y"
     
     $('.submit').click(function(){
-
-        let search = $('input').val()
-        videoSearch(key,search,5)
+        let q = $('input').val()
+        videoSearch(key,q,5)
     })
 
-    function videoSearch (key, search, limit) {
-
-        $.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${limit}&order=relevance&q=${search}&key=${key}`, 
+    function videoSearch (key, q, limit) {
+        $.get('https://www.googleapis.com/youtube/v3/search', 
+        {
+            part: "snippet,id",
+            q: q,
+            type: "video",
+            key: key,
+            maxResults:limit  ,
+        },
         function(data){
-            console.log(data);
-            // console.log(data.items[0].snippet);
+            // console.log(data);
+            let nextPageToken = data.nextPageToken
+            let prevPageToken = data.prevPageToken
+            // console.log(nextPageToken);
             let img = null
             let title = null
             let user = null
@@ -35,14 +42,14 @@ $(document).ready(function(){
                 display +=`
                 <li>
                     <div class="pic">
-                    <a data-fancybox href="http://www.youtube.com/embed/${video}">
+                    <a data-fancybox href="https://www.youtube.com/embed/${video}">
                     <img src=${img} alt="" />
                     </a>
                     </div>
                     <div class="content">
-                         <a data-fancybox href="http://www.youtube.com/embed/${video}">
+                         <a data-fancybox href="https://www.youtube.com/embed/${video}">
                           <h3>${title}</h3>   
-                        </a>
+                         </a>
                         <span>${time}</span>
                         <span>${user}</span>
                         <p>
@@ -52,10 +59,164 @@ $(document).ready(function(){
                 </li>
                 `
             });
-            $('.result ul').html(display)
-            
-        })
 
+            $('.result ul').html(display)
+
+            let btns = createBtn(nextPageToken,prevPageToken,q)
+            $('.pages').html(btns)
+            $('#prev').on('click',prevPage)           
+            $('#next').on('click',nextPage)           
+        })
+        function createBtn(nextPageToken,prevPageToken,search){
+            let output = ''
+            if(!prevPageToken){
+                output = `
+                <button class="switch" id="next" data-token=${nextPageToken} data-query=${q} onclick="nextPage()">
+                  <i class="fas fa-arrow-circle-right"></i>
+                </button>
+                `
+            }else{
+                output = `
+                <button class="switch" id="prev" data-token=${prevPageToken} data-query=${q} onclick="prevPage()">
+                   <i class="fas fa-arrow-circle-left"></i>
+                </button>
+                <button class="switch" id="next" data-token=${nextPageToken} data-query=${q} onclick="nextPage()">
+                  <i class="fas fa-arrow-circle-right"></i>
+                </button>
+                `
+            }
+             return output
+        }
+        function nextPage(){
+            let token = $('#next').data('token')
+            let q = $('#next').data('query')
+            
+            $.get('https://www.googleapis.com/youtube/v3/search', 
+            {
+                part: "snippet,id",
+                q: q,
+                type: "video",
+                key: key,
+                pageToken: token,
+                maxResults: limit,
+            },
+            function(data){
+                // console.log(data);
+                let nextPageToken = data.nextPageToken
+                let prevPageToken = data.prevPageToken
+                // console.log(nextPageToken);
+                let img = null
+                let title = null
+                let user = null
+                let time = null
+                let description = null
+                let video = null
+                let display = ''
+    
+                data.items.forEach(item => {
+                    
+                    img = item.snippet.thumbnails.default.url
+                    title = item.snippet.title
+                    time = item.snippet.publishedAt
+                    user = item.snippet.channelTitle
+                    description = item.snippet.description
+                    video = item.id.videoId
+    
+                    display +=`
+                    <li>
+                        <div class="pic">
+                        <a data-fancybox href="https://www.youtube.com/embed/${video}">
+                        <img src=${img} alt="" />
+                        </a>
+                        </div>
+                        <div class="content">
+                             <a data-fancybox href="https://www.youtube.com/embed/${video}">
+                              <h3>${title}</h3>   
+                             </a>
+                            <span>${time}</span>
+                            <span>${user}</span>
+                            <p>
+                            ${description}
+                            </p>
+                        </div>
+                    </li>
+                    `
+                });
+    
+                $('.result ul').html(display)
+    
+                let btns = createBtn(nextPageToken,prevPageToken,q)
+                $('.pages').html(btns)
+                $('#prev').on('click',prevPage)           
+                $('#next').on('click',nextPage)
+            }) 
+        }
+        function prevPage(){
+            let token = $('#prev').data('token')
+            let q = $('#next').data('query')
+            
+            $.get('https://www.googleapis.com/youtube/v3/search', 
+            {
+                part: "snippet,id",
+                q: q,
+                type: "video",
+                key: key,
+                pageToken: token,
+                maxResults: limit,
+            },
+            function(data){
+                // console.log(data);
+                let nextPageToken = data.nextPageToken
+                let prevPageToken = data.prevPageToken
+                // console.log(nextPageToken);
+                let img = null
+                let title = null
+                let user = null
+                let time = null
+                let description = null
+                let video = null
+                let display = ''
+    
+                data.items.forEach(item => {
+                    
+                    img = item.snippet.thumbnails.default.url
+                    title = item.snippet.title
+                    time = item.snippet.publishedAt
+                    user = item.snippet.channelTitle
+                    description = item.snippet.description
+                    video = item.id.videoId
+    
+                    display +=`
+                    <li>
+                        <div class="pic">
+                        <a data-fancybox href="https://www.youtube.com/embed/${video}">
+                        <img src=${img} alt="" />
+                        </a>
+                        </div>
+                        <div class="content">
+                             <a data-fancybox href="https://www.youtube.com/embed/${video}">
+                              <h3>${title}</h3>   
+                             </a>
+                            <span>${time}</span>
+                            <span>${user}</span>
+                            <p>
+                            ${description}
+                            </p>
+                        </div>
+                    </li>
+                    `
+                });
+    
+                $('.result ul').html(display)
+    
+                let btns = createBtn(nextPageToken,prevPageToken,q)
+                $('.pages').html(btns)
+                $('#prev').on('click',prevPage)           
+                $('#next').on('click',nextPage)
+            }) 
+        }       
     }
+
+
 
 })
