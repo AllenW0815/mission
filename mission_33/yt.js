@@ -129,12 +129,12 @@ $(document).ready(function(){
                     display +=`
                     <li>
                         <div class="pic">
-                        <a data-fancybox href="https://www.youtube.com/embed/${video}">
+                        <a class="fresco" href="https://www.youtube.com/embed/${video}">
                         <img src=${img} alt="" />
                         </a>
                         </div>
                         <div class="content">
-                             <a data-fancybox href="https://www.youtube.com/embed/${video}">
+                             <a class="fresco" href="https://www.youtube.com/embed/${video}">
                               <h3>${title}</h3>   
                              </a>
                             <span>${time}</span>
@@ -193,12 +193,12 @@ $(document).ready(function(){
                     display +=`
                     <li>
                         <div class="pic">
-                        <a data-fancybox href="https://www.youtube.com/embed/${video}">
+                        <a class="fresco" href="https://www.youtube.com/embed/${video}">
                         <img src=${img} alt="" />
                         </a>
                         </div>
                         <div class="content">
-                             <a data-fancybox href="https://www.youtube.com/embed/${video}">
+                             <a class="fresco" href="https://www.youtube.com/embed/${video}">
                               <h3>${title}</h3>   
                              </a>
                             <span>${time}</span>
