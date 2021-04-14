@@ -130,7 +130,9 @@ li .content h3{
     /* overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box; */
-
+}
+li .content span:first-child{
+    margin-right: 10px;
 }
 li .content p{
     font-size: 12px;
