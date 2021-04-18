@@ -1,0 +1,147 @@
+@font-face {
+  font-family: "Gotham Medium";
+  src: url("Gotham-Medium.woff2") format("woff2"),
+    url("Gotham-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gotham Book";
+  src: url("Gotham-Book.woff2") format("woff2"),
+    url("Gotham-Book.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Gotham Medium";
+}
+p,
+span,
+li,
+a {
+  font-family: "Gotham Book";
+}
+
+nav li {
+  margin: 0 3px;
+}
+nav li a {
+  color: #000;
+  font-weight: 600;
+  font-size: 14px;
+}
+.navbar-brand {
+  padding-left: 20px;
+}
+.logo {
+  width: 100px;
+  display: flex;
+  align-items: center;
+}
+
+#fullpage {
+  position: relative;
+}
+.area {
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+}
+.area-01 {
+  background-image: url("../image/bg1.jpg");
+}
+.area-02 {
+  background-image: url("../image/bg2.jpg");
+}
+.area-03 {
+  background-image: url("../image/bg3.jpg");
+}
+.area-04 {
+  background-image: url("../image/bg4.jpg");
+}
+
+.text {
+  margin-top: 150px;
+}
+
+.text h2 {
+  font-size: 40px;
+  color: #393c41;
+}
+.text p {
+  font-size: 14px;
+  color: #393c41;
+}
+.text p a {
+  font-size: 14px;
+  color: #393c41;
+}
+
+.low-button {
+  position: absolute;
+  bottom: 6vh;
+  /*不熟的置中方式*/
+  margin-right: auto;
+  margin-left: auto;
+  left: 0;
+  right: 0;
+  /**/
+}
+.db-btn a {
+  width: 256px;
+  height: 40px;
+  margin: 8px;
+  /*不熟的置中方式*/
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  /**/
+  padding: 5px 40px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-decoration: none;
+  opacity: 0.9;
+}
+.db-btn a.black-button {
+  background-color: #171a20;
+  color: #fff;
+}
+.db-btn a.white-button {
+  background-color: #fff;
+  color: #171a20;
+}
+
+.arrow {
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.fp-tableCell {
+  display: table-cell;
+  vertical-align: top;
+  width: 100%;
+  height: 100%;
+}
+
+/*for loading animation*/
+.text h2,
+.text p,
+.db-btn .black-button,
+.db-btn .white-button,
+.arrow {
+  opacity: 0;
+  visibility: hidden;
+}
+@media only screen and (max-width: 990px) {
+  .navbar {
+    background-color: #fff;
+  }
+}
