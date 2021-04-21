@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700;900&display=swap");
+:root {
+  --priceColor: #AF0D12
+;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-family: 'Noto Serif TC', serif;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  height: 6rem;
+  padding: 1rem 4rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 100;
+}
+
+header .brand-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .brand-name a img {
+  width: 60%;
+}
+
+header nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+}
+
+header nav ul li {
+  margin: 1rem;
+}
+
+header nav ul li a {
+  color: #fff;
+  -webkit-text-decoration: 0;
+          text-decoration: 0;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+}
+
+section {
+  width: 100%;
+}
+
+section .kv {
+  width: 100%;
+  min-height: 100vh;
+  background: url(../image/kv.jpg) no-repeat center center;
+  -webkit-filter: brightness(0.8);
+          filter: brightness(0.8);
+}
+
+section .recommand {
+  width: 100%;
+  height: 100vh;
+  background: url(../image/bg_texture.jpg) no-repeat center center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+section .recommand h3 {
+  width: 100%;
+  text-align: center;
+  padding: 3rem 0;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 0.5rem;
+}
+
+section .recommand .product-list {
+  width: 75%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+section .recommand .product-list .porduct {
+  width: 352px;
+  height: 416px;
+}
+
+section .recommand .product-list .porduct .p-img {
+  width: 336px;
+  height: 240px;
+  margin: 8px;
+}
+
+section .recommand .product-list .porduct .p-img img {
+  width: 100%;
+}
+
+section .recommand .product-list .porduct .p-intro {
+  width: 336px;
+  margin: 8px;
+}
+
+section .recommand .product-list .porduct .p-intro .p-name {
+  margin: 1rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+section .recommand .product-list .porduct .p-intro .p-format {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+section .recommand .product-list .porduct .p-intro .price {
+  font-size: 1.2rem;
+  color: var(--priceColor);
+}
+/*# sourceMappingURL=main.css.map */
