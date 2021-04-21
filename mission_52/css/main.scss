@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700;900&display=swap');
 
 :root{
-    --primaryColor: #3A0A0A
-    --priceColor: #AF0D12
+    --primaryColor: #3A0A0A;
+    --priceColor: #AF0D12;
 }
 
 *{
@@ -34,6 +34,7 @@ header{
     .brand-name{
         @include to-middle();
         a{
+            text-decoration:none;
          img{
              width: 60%;
          }
@@ -49,7 +50,7 @@ header{
                     color:#fff;
                     text-decoration: 0;
                     font-weight: 700;
-                    letter-spacing: 0.2rem
+                    letter-spacing: 0.2rem;
                 }
             }
         }
@@ -60,21 +61,21 @@ section{
     width: 100%;
     .kv{
         width: 100%;
-        // min-height: 100vh;
-        background: url(../image/kv.jpg) no-repeat center center;
+        min-height: 100vh;
+        background: url(../../image/kv.jpg) no-repeat center center;
         filter: brightness(0.8);
     }
-    .recommand{
+    .content{
         width: 100%;
-        // height: 100vh;
-        background: url(../image/bg_texture.jpg) no-repeat center center; display:flex;
+        // height: 180vh;
+        background: url(../../image/bg_texture.jpg) no-repeat center center; display:flex;
         // justify-content: center;
         align-items: center;
         flex-direction:column;
-        h3{
+        .recommand{
             width: 100%;
             text-align: center;
-            padding: 3rem 0;
+            margin-top: 3rem;
             // margin: 0 auto;
             font-size: 2.5rem;
             font-weight: 900;
@@ -84,6 +85,7 @@ section{
             width: 75%;
             display:flex;
             flex-wrap: wrap;
+            padding: 3rem 0;
             .porduct{
                 width: 352px;
                 height: 416px;
@@ -114,11 +116,59 @@ section{
                 }
             }
         }
+        .brand-spirit{
+            width: 100%;
+            .bs-img{
+                position: relative;
+                width: 55%;
+                bottom: -2px;
+                img{
+                    width: 100%;
+                }
+            }
+        }
     }
+    
 }
 
 footer{
     width: 100%;
     height: 20rem;
     background-color: var(--primaryColor);
+    color: #fff;
+    font-weight: 300;
+    @include to-middle();
+    flex-direction: column;
+    .f-question{
+        display: flex;
+        li{
+            margin: 2rem;
+            position: relative;
+        }
+        li:first-child::after{
+            content: "";
+            background-color: #fff;
+            position: absolute;
+            left: 150%;
+            width: 2px;
+            height: 1rem;
+        }
+    }
+    .f-contact{
+        margin-top: 1rem;
+        margin-left: 5rem;
+        display: flex;
+        li{
+            margin: 1rem;
+            position: relative;
+        }
+        li:not(:last-child)::after{
+            content: "";
+            background-color: #fff;
+            position: absolute;
+            left: 110%;
+            width: 2px;
+            height: 1rem;
+        }
+    }
 }
