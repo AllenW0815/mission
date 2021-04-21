@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700;900&display=swap');
+
+:root{
+    --primaryColor: #3A0A0A
+    --priceColor: #AF0D12
+}
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    font-family: 'Noto Serif TC', serif;
+}
+
+@mixin to-middle {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+header{
+    position: fixed;
+    width: 100%;
+    height: 6rem;
+    padding: 1rem 4rem;
+    // background:linear-gradient(to bottom,#1b0301 0%,rgba(255, 255, 255, 0) 100%);
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    .brand-name{
+        @include to-middle();
+        a{
+         img{
+             width: 60%;
+         }
+        }
+    }
+    nav{
+        ul{
+            @include to-middle();
+            list-style: none;
+            li{
+                margin:1rem;
+                a{
+                    color:#fff;
+                    text-decoration: 0;
+                    font-weight: 700;
+                    letter-spacing: 0.2rem
+                }
+            }
+        }
+    }
+}
+
+section{
+    width: 100%;
+    .kv{
+        width: 100%;
+        // min-height: 100vh;
+        background: url(../image/kv.jpg) no-repeat center center;
+        filter: brightness(0.8);
+    }
+    .recommand{
+        width: 100%;
+        // height: 100vh;
+        background: url(../image/bg_texture.jpg) no-repeat center center; display:flex;
+        // justify-content: center;
+        align-items: center;
+        flex-direction:column;
+        h3{
+            width: 100%;
+            text-align: center;
+            padding: 3rem 0;
+            // margin: 0 auto;
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 0.5rem;
+        }
+        .product-list{
+            width: 75%;
+            display:flex;
+            flex-wrap: wrap;
+            .porduct{
+                width: 352px;
+                height: 416px;
+                .p-img{
+                    width: 336px;
+                    height: 240px;
+                    margin: 8px;
+                    img{
+                        width: 100%;
+                    }
+                }
+                .p-intro{
+                    width: 336px;
+                    margin: 8px;
+                    .p-name{
+                        margin: 1rem 0;
+                        font-size: 2rem;
+                        font-weight: 700;
+                    }
+                    .p-format{
+                        font-size: 1.2rem;
+                        margin-bottom: 1rem;
+                    }
+                    .price{
+                        font-size: 1.2rem;
+                        color: var(--priceColor)
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer{
+    width: 100%;
+    height: 20rem;
+    background-color: var(--primaryColor);
+}
