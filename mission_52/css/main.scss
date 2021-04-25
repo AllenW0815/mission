@@ -94,13 +94,15 @@ section{
     .kv{
         width: 100%;
         min-height: 100vh;
-        background: url(../../image/kv.jpg) no-repeat center center;
+        background: url(../../image/kv.jpg) no-repeat center;
+        background-size: cover;
         filter: brightness(0.8);
     }
     .content{
         width: 100%;
         // height: 180vh;
         background: url(../../image/bg_texture.jpg) repeat;
+        background-size: cover;
         display:flex;
         // justify-content: center;
         align-items: center;
