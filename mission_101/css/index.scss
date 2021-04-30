@@ -1,0 +1,26 @@
+@import '_reset.scss';
+@import '_media-breakpoint-fromMobile';
+
+html {
+    font-size: 16px;
+}
+
+.wrap {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    @include md {
+        display: flex;
+    }
+    .item {
+        background-color: #ffa;
+        margin: 0 10px 20px;
+        padding: 10px;
+        @include md {
+            width: calc(100%/3);
+        }
+        h3 {
+            font-size: 2rem;
+        }
+    }
+}
