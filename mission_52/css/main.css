@@ -88,7 +88,7 @@ section {
 section .kv {
   width: 100%;
   min-height: 100vh;
-  background: url(../../image/kv.jpg) no-repeat center;
+  background: url(/mission_52/image/kv.jpg) no-repeat center;
   background-size: cover;
   filter: brightness(0.8);
 }
@@ -159,10 +159,10 @@ section .content .brand-spirit {
 section .content .brand-spirit .bs-img {
   position: relative;
   width: 55%;
-  bottom: -2px;
 }
 section .content .brand-spirit .bs-img img {
   width: 100%;
+  vertical-align: bottom;
 }
 
 footer {
