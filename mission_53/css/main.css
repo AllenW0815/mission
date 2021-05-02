@@ -150,7 +150,7 @@ header .hamburger .h-line::after {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: url(/mission_53/image/kv-mobile.jpg);
+  background-image: url(image/kv-mobile.jpg);
   background-position: 50% 50%;
   background-size: cover;
 }
