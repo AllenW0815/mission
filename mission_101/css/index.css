@@ -18,7 +18,7 @@ time, mark, audio, video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  font-family: "Microsoft JhengHei", "Noto Sans SC", sans-serif;
+  font-family: 'Microsoft JhengHei','Noto Sans SC', sans-serif;
 }
 
 article, aside, details, figcaption, figure,
@@ -40,7 +40,7 @@ blockquote, q {
 
 blockquote:before, blockquote:after,
 q:before, q:after {
-  content: "";
+  content: '';
   content: none;
 }
 
@@ -58,21 +58,27 @@ html {
   max-width: 1440px;
   margin: 0 auto;
 }
+
 @media (min-width: 767.98px) {
   .wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
 }
+
 .wrap .item {
   background-color: #ffa;
   margin: 0 10px 20px;
   padding: 10px;
 }
+
 @media (min-width: 767.98px) {
   .wrap .item {
     width: calc(100%/3);
   }
 }
+
 .wrap .item h3 {
   font-size: 2rem;
 }
