@@ -5,12 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>字數計算</title>
-    <link rel="stylesheet" href="css/reset.css" />
+    <!-- <link rel="stylesheet" href="css/reset.css" /> -->
     <link rel="stylesheet" href="css/letterCount.css" />
   </head>
   <body>
-    <textarea name="monitor" id="monitor" cols="30" rows="10"></textarea>
-    <h2 class="result"></h2>
+    <div class="container">
+      <textarea name="monitor" id="monitor"></textarea>
+      <div class="results">
+        <div class="box">
+          <h3>字數統計<span>Total letters</span></h3>
+          <div class="result">
+            <h2>0</h2>
+          </div>
+        </div>
+        <div class="box">1</div>
+        <div class="box">1</div>
+        <div class="box">1</div>
+      </div>
+    </div>
+
     <script src="letterCount.js"></script>
   </body>
 </html>
