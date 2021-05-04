@@ -112,7 +112,6 @@ body .container .results {
 
 body .container .results .box {
   width: 60%;
-  height: 20%;
   padding: 1rem;
   color: #777;
   background-color: #fff;
@@ -120,14 +119,15 @@ body .container .results .box {
   -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin: 1rem 0;
+  padding: 0.5rem;
 }
 
 body .container .results .box h3 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 500;
-  padding-bottom: 0.5rem;
   border-bottom: 1px solid #999;
   text-align: center;
+  padding: 10px 0;
 }
 
 body .container .results .box h3 span {
@@ -136,12 +136,17 @@ body .container .results .box h3 span {
   margin-left: 1rem;
 }
 
+body .container .results .box h3 p {
+  padding-top: 3px;
+  font-size: 0.8rem;
+}
+
 body .container .results .box .result {
   width: 100%;
-  height: 80%;
   display: -ms-grid;
   display: grid;
   place-items: center;
+  padding: 10px 0;
 }
 
 body .container .results .box .result h2 {
